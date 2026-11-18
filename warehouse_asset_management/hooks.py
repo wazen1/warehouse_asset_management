@@ -150,6 +150,9 @@ jinja = {
 }
 
 doc_events = {
+	"Journal Entry": {
+		"before_submit": "warehouse_asset_management.overrides.depreciation.prevent_duplicate_submission"
+	},
 	"Purchase Receipt": {
 		"on_submit": "warehouse_asset_management.events.on_purchase_receipt_submit"
 	},
@@ -232,12 +235,12 @@ custom_fields = {
 
 # Request Events
 # ----------------
-# before_request = ["warehouse_asset_management.utils.before_request"]
+before_request = ["warehouse_asset_management.overrides.depreciation.apply"]
 # after_request = ["warehouse_asset_management.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["warehouse_asset_management.utils.before_job"]
+before_job = ["warehouse_asset_management.overrides.depreciation.apply"]
 # after_job = ["warehouse_asset_management.utils.after_job"]
 
 # User Data Protection
@@ -286,4 +289,5 @@ custom_fields = {
 
 fixtures = [
 	{"dt": "Property Setter", "filters": [["doc_type", "=", "Asset"]]},
+	{"dt": "Custom Field", "filters": [["name", "=", "Accounts Settings-require_depreciation_entry_approval"]]},
 ]
