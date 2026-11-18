@@ -12,19 +12,19 @@ from frappe.utils import cint, flt, getdate
 import erpnext.assets.doctype.asset.depreciation as depr_module
 
 _original = depr_module._make_journal_entry_for_depreciation
-_EXPECTED_PARAMS = [
+_signature = inspect.signature(_original)
+# Arguments this override needs from erpnext's function; other arguments may come and go
+_REQUIRED_PARAMS = {
 	"depr_schedule_doc",
 	"asset",
 	"date",
 	"depr_schedule",
-	"sch_start_idx",
-	"sch_end_idx",
 	"depr_cost_center",
 	"depr_series",
 	"credit_account",
 	"debit_account",
 	"accounting_dimensions",
-]
+}
 
 
 def approval_required():
@@ -53,48 +53,22 @@ def _draft_exists(asset, depr_schedule_doc, depr_schedule):
 	return bool(query.run())
 
 
-def make_journal_entry_for_depreciation(
-	depr_schedule_doc,
-	asset,
-	date,
-	depr_schedule,
-	sch_start_idx,
-	sch_end_idx,
-	depr_cost_center,
-	depr_series,
-	credit_account,
-	debit_account,
-	accounting_dimensions,
-):
-	args = (
-		depr_schedule_doc,
-		asset,
-		date,
-		depr_schedule,
-		sch_start_idx,
-		sch_end_idx,
-		depr_cost_center,
-		depr_series,
-		credit_account,
-		debit_account,
-		accounting_dimensions,
-	)
+def make_journal_entry_for_depreciation(*args, **kwargs):
 	if not approval_required():
-		return _original(*args)
+		return _original(*args, **kwargs)
 
-	if not (sch_start_idx and sch_end_idx) and not (
-		not depr_schedule.journal_entry and getdate(depr_schedule.schedule_date) <= getdate(date)
-	):
+	a = frappe._dict(_signature.bind(*args, **kwargs).arguments)
+	if a.depr_schedule.journal_entry or getdate(a.depr_schedule.schedule_date) > getdate(a.date):
 		return
-	if _draft_exists(asset, depr_schedule_doc, depr_schedule):
+	if _draft_exists(a.asset, a.depr_schedule_doc, a.depr_schedule):
 		return
 
 	# Same as erpnext, but the entry is left as draft for review instead of being submitted
 	je = frappe.new_doc("Journal Entry")
-	depr_module.setup_journal_entry_metadata(je, depr_schedule_doc, depr_series, depr_schedule, asset)
+	depr_module.setup_journal_entry_metadata(je, a.depr_schedule_doc, a.depr_series, a.depr_schedule, a.asset)
 
 	credit_entry, debit_entry = depr_module.get_credit_and_debit_entry(
-		credit_account, depr_schedule, asset, depr_cost_center, debit_account, accounting_dimensions
+		a.credit_account, a.depr_schedule, a.asset, a.depr_cost_center, a.debit_account, a.accounting_dimensions
 	)
 	je.append("accounts", credit_entry)
 	je.append("accounts", debit_entry)
@@ -132,10 +106,21 @@ def prevent_duplicate_submission(doc, method=None):
 			)
 
 
-_signature_ok = list(inspect.signature(_original).parameters) == _EXPECTED_PARAMS
+_signature_ok = _REQUIRED_PARAMS <= set(_signature.parameters)
+
+
+_warned = False
 
 
 def apply():
 	"""Called from before_request / before_job. If erpnext changed the function, keep its default (auto-submit)."""
+	global _warned
 	if _signature_ok:
 		depr_module._make_journal_entry_for_depreciation = make_journal_entry_for_depreciation
+	elif not _warned and approval_required():
+		_warned = True
+		frappe.log_error(
+			"erpnext changed _make_journal_entry_for_depreciation; depreciation entries are being submitted "
+			"automatically. Update warehouse_asset_management/overrides/depreciation.py.",
+			"Depreciation approval disabled",
+		)
