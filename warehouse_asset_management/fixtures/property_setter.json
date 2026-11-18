@@ -247,7 +247,7 @@
   "doctype_or_field": "DocField",
   "field_name": "cost_center",
   "is_system_generated": 1,
-  "modified": "2026-11-18 13:52:12.041672",
+  "modified": "2026-11-18 14:02:53.331709",
   "module": null,
   "name": "Asset-cost_center-allow_on_submit",
   "property": "allow_on_submit",

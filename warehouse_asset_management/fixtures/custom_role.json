@@ -1,0 +1,68 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom Role",
+  "modified": "2026-11-18 14:01:51.444998",
+  "name": "h6qsn0ghs4",
+  "page": null,
+  "ref_doctype": "Asset Activity",
+  "report": "Asset Activity",
+  "roles": [
+   {
+    "role": "System Manager"
+   },
+   {
+    "role": "Accounts User"
+   },
+   {
+    "role": "Quality Manager"
+   },
+   {
+    "role": "Accounts Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Role",
+  "modified": "2026-11-18 14:01:51.564865",
+  "name": "h6rph0jfk3",
+  "page": null,
+  "ref_doctype": "Asset Maintenance",
+  "report": "Asset Maintenance",
+  "roles": [
+   {
+    "role": "System Manager"
+   },
+   {
+    "role": "Accounts Manager"
+   },
+   {
+    "role": "Accounts User"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Role",
+  "modified": "2026-11-18 14:01:51.572946",
+  "name": "h6ri8eda0m",
+  "page": null,
+  "ref_doctype": "Asset",
+  "report": "Fixed Asset Register",
+  "roles": [
+   {
+    "role": "Asset Manager"
+   },
+   {
+    "role": "Asset Employee"
+   },
+   {
+    "role": "Accounts Manager"
+   },
+   {
+    "role": "Accounts User"
+   }
+  ]
+ }
+]

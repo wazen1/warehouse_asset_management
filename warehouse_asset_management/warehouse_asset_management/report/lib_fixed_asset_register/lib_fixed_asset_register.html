@@ -1,0 +1,390 @@
+<style>
+@import url(https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap);
+
+.far-wrap {
+	font-family: Cairo, Inter, -apple-system, sans-serif;
+	direction: rtl;
+	text-align: right;
+	color: #1e293b;
+	padding: 10px 14px;
+	width: 100%;
+	background: #ffffff;
+}
+
+/* Header */
+.far-header-box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 14px 20px;
+	background: linear-gradient(135deg, #0f2942 0%, #1e3a5f 100%);
+	color: #ffffff;
+	border-radius: 6px 6px 0 0;
+	border-bottom: 3px solid #c49a3c;
+}
+
+.far-bank-title {
+	font-size: 18px;
+	font-weight: 800;
+	color: #ffffff;
+	letter-spacing: 0.3px;
+}
+
+.far-bank-dept {
+	font-size: 11px;
+	color: #cbd5e1;
+	margin-top: 2px;
+}
+
+.far-center-title {
+	text-align: center;
+}
+
+.far-main-heading {
+	font-size: 18px;
+	font-weight: 800;
+	color: #f6e05e;
+	letter-spacing: 0.5px;
+}
+
+.far-sub-heading {
+	font-size: 11px;
+	color: #cbd5e1;
+	margin-top: 2px;
+}
+
+.far-meta-info {
+	font-size: 10.5px;
+	color: #e2e8f0;
+	text-align: left;
+	line-height: 1.7;
+	direction: rtl;
+}
+
+/* KPI Summary Cards */
+.far-kpi-grid {
+	display: flex;
+	gap: 10px;
+	margin: 12px 0;
+}
+
+.far-kpi-card {
+	flex: 1;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-top: 3px solid #1e3a5f;
+	border-radius: 6px;
+	padding: 8px 12px;
+	text-align: right;
+}
+
+.far-kpi-gold {
+	border-top-color: #c49a3c;
+	background: #fffdf9;
+}
+
+.far-kpi-red {
+	border-top-color: #dc2626;
+	background: #fef2f2;
+}
+
+.far-kpi-green {
+	border-top-color: #059669;
+	background: #f0fdf4;
+}
+
+.far-kpi-title {
+	font-size: 10.5px;
+	color: #64748b;
+	font-weight: 600;
+	margin-bottom: 2px;
+}
+
+.far-kpi-amount {
+	font-size: 15px;
+	font-weight: 800;
+	color: #0f2942;
+	font-family: Inter, Cairo, sans-serif;
+	font-variant-numeric: tabular-nums;
+	direction: ltr;
+	text-align: left;
+}
+
+/* Filter Bar */
+.far-filter-strip {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 20px;
+	background: #f1f5f9;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 8px 14px;
+	margin-bottom: 12px;
+	font-size: 11px;
+}
+
+.far-filter-cell strong {
+	color: #0f2942;
+}
+
+/* Data Table */
+.far-table-container {
+	width: 100%;
+	border: 1px solid #cbd5e1;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+table.far-grid {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 10.5px;
+}
+
+table.far-grid thead th {
+	background: #11253e;
+	color: #ffffff;
+	font-weight: 700;
+	padding: 8px 6px;
+	border: 1px solid #1e3a5f;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	font-size: 10.5px;
+}
+
+table.far-grid tbody td {
+	padding: 6px 7px;
+	border: 1px solid #e2e8f0;
+	vertical-align: middle;
+	color: #1e293b;
+	line-height: 1.4;
+}
+
+table.far-grid tbody tr:nth-child(even) {
+	background: #f8fafc;
+}
+
+table.far-grid tbody tr:hover {
+	background: #f1f5f9;
+}
+
+td.far-num-col {
+	font-family: Inter, Cairo, sans-serif;
+	direction: ltr;
+	text-align: left !important;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	font-weight: 600;
+	font-size: 11px;
+}
+
+.far-pill {
+	display: inline-block;
+	padding: 2px 7px;
+	border-radius: 12px;
+	font-size: 9.5px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.far-pill-blue {
+	background: #eff6ff;
+	color: #1d4ed8;
+	border: 1px solid #bfdbfe;
+}
+
+.far-pill-green {
+	background: #ecfdf5;
+	color: #047857;
+	border: 1px solid #a7f3d0;
+}
+
+table.far-grid tfoot td {
+	background: #e2e8f0;
+	color: #0f2942;
+	font-weight: 800;
+	padding: 8px 7px;
+	border: 1px solid #cbd5e1;
+	border-top: 2px solid #0f2942;
+	font-size: 11px;
+}
+
+/* Signatures */
+.far-signatures {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 22px;
+	padding-top: 10px;
+}
+
+.far-sig-item {
+	text-align: center;
+	min-width: 160px;
+}
+
+.far-sig-role {
+	font-size: 11px;
+	font-weight: 700;
+	color: #334155;
+	margin-bottom: 35px;
+}
+
+.far-sig-bottom {
+	border-top: 1px dashed #64748b;
+	padding-top: 4px;
+	font-size: 10px;
+	color: #64748b;
+}
+
+@page {
+	size: A4 landscape;
+	margin: 8mm 6mm;
+}
+
+@media print {
+	body {
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+	.far-wrap { padding: 0; }
+	thead { display: table-header-group !important; }
+	tfoot { display: table-footer-group !important; }
+	tr { page-break-inside: avoid !important; }
+}
+</style>
+
+<div class="far-wrap">
+	{%
+		var sum_cost = 0;
+		var sum_depr = 0;
+		var sum_val = 0;
+		var total_count = data.length;
+
+		for (var k=0; k<total_count; k++) {
+			var item = data[k];
+			sum_cost += Number(item.net_purchase_amount || item.purchase_amount || 0);
+			sum_depr += Number(item.depreciated_amount || item.accumulated_depreciation_amount || 0);
+			sum_val += Number(item.asset_value || item.value_after_depreciation || 0);
+		}
+
+		var formatted_cost = sum_cost.toLocaleString("en-US", {minimumFractionDigits: 3, maximumFractionDigits: 3});
+		var formatted_depr = sum_depr.toLocaleString("en-US", {minimumFractionDigits: 3, maximumFractionDigits: 3});
+		var formatted_val = sum_val.toLocaleString("en-US", {minimumFractionDigits: 3, maximumFractionDigits: 3});
+	%}
+
+	<!-- Header -->
+	<div class="far-header-box">
+		<div>
+			<div class="far-bank-title">🏛️ المصرف الإسلامي الليبي</div>
+			<div class="far-bank-dept">إدارة الشؤون المالية والمحاسبة · قسم الأصول الثابتة</div>
+		</div>
+
+		<div class="far-center-title">
+			<div class="far-main-heading">سـجـل الأصـول الـثـابـتـة</div>
+			<div class="far-sub-heading">Fixed Asset Register</div>
+		</div>
+
+		<div class="far-meta-info">
+			<div><strong>الشركة:</strong> {%= filters.company || "Lib" %}</div>
+			<div><strong>الفرع / المركز:</strong> {%= filters.cost_center || "فرع الزهراء" %}</div>
+			<div><strong>تاريخ الطباعة:</strong> {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}</div>
+		</div>
+	</div>
+
+	<!-- KPI Summary -->
+	<div class="far-kpi-grid">
+		<div class="far-kpi-card far-kpi-gold">
+			<div class="far-kpi-title">إجمالي تكلفة الشراء</div>
+			<div class="far-kpi-amount">{%= formatted_cost %} د.ل</div>
+		</div>
+		<div class="far-kpi-card far-kpi-red">
+			<div class="far-kpi-title">إجمالي مجمع الإهلاك</div>
+			<div class="far-kpi-amount">{%= formatted_depr %} د.ل</div>
+		</div>
+		<div class="far-kpi-card far-kpi-green">
+			<div class="far-kpi-title">صافي القيمة الدفترية</div>
+			<div class="far-kpi-amount">{%= formatted_val %} د.ل</div>
+		</div>
+		<div class="far-kpi-card">
+			<div class="far-kpi-title">عدد الأصول بالكشف</div>
+			<div class="far-kpi-amount">{%= total_count %} أصل</div>
+		</div>
+	</div>
+
+	<!-- Table -->
+	<div class="far-table-container">
+		<table class="far-grid">
+			<thead>
+				<tr>
+					<th style="width: 25px;">#</th>
+					<th style="width: 110px;">رقم الأصل</th>
+					<th>اسم الأصل</th>
+					<th style="width: 120px;">فئة الأصل</th>
+					<th style="width: 110px;">مركز التكلفة</th>
+					<th style="width: 80px;">الموقع</th>
+					<th style="width: 80px;">تاريخ الشراء</th>
+					<th style="width: 105px;">تكلفة الشراء (د.ل)</th>
+					<th style="width: 100px;">مجمع الإهلاك (د.ل)</th>
+					<th style="width: 105px;">القيمة الدفترية (د.ل)</th>
+					<th style="width: 85px;">الحالة</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for (var i=0; i<total_count; i++) { %}
+					{%
+						var r = data[i];
+						var c_str = Number(r.net_purchase_amount || 0).toLocaleString("en-US", {minimumFractionDigits: 3, maximumFractionDigits: 3});
+						var d_str = Number(r.depreciated_amount || 0).toLocaleString("en-US", {minimumFractionDigits: 3, maximumFractionDigits: 3});
+						var v_str = Number(r.asset_value || 0).toLocaleString("en-US", {minimumFractionDigits: 3, maximumFractionDigits: 3});
+						var dt_str = r.purchase_date || "—";
+						if (typeof dt_str === "string" && dt_str.indexOf("T") > 0) {
+							dt_str = dt_str.split("T")[0];
+						}
+						var is_part = r.status === "Partially Depreciated";
+						var badge_text = is_part ? "مهلك جزئياً" : (r.status === "Submitted" ? "معتمد" : r.status);
+						var badge_cls = is_part ? "far-pill-blue" : "far-pill-green";
+					%}
+					<tr>
+						<td style="text-align: center;">{%= i + 1 %}</td>
+						<td style="text-align: center; font-family: Inter, sans-serif; font-weight: 700; font-size: 9.5px; color: #0f2942;">{%= r.asset_id || r.name %}</td>
+						<td style="font-weight: 600;">{%= r.asset_name %}</td>
+						<td>{%= r.asset_category || "—" %}</td>
+						<td style="text-align: center; font-size: 9.5px;">{%= r.cost_center || "—" %}</td>
+						<td style="text-align: center;">{%= r.location || "—" %}</td>
+						<td style="text-align: center; font-family: Inter, sans-serif;">{%= dt_str %}</td>
+						<td class="far-num-col">{%= c_str %}</td>
+						<td class="far-num-col" style="color: #b91c1c;">{%= d_str %}</td>
+						<td class="far-num-col" style="color: #047857; font-weight: 700;">{%= v_str %}</td>
+						<td style="text-align: center;"><span class="far-pill {%= badge_cls %}">{%= badge_text %}</span></td>
+					</tr>
+				{% } %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="7" style="text-align: right; font-weight: 800; padding-right: 12px;">الإجمـــــالي العـــــام ({%= total_count %} أصل):</td>
+					<td class="far-num-col" style="font-weight: 800; color: #0f2942;">{%= formatted_cost %}</td>
+					<td class="far-num-col" style="font-weight: 800; color: #b91c1c;">{%= formatted_depr %}</td>
+					<td class="far-num-col" style="font-weight: 800; color: #047857;">{%= formatted_val %}</td>
+					<td></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<!-- Signatures -->
+	<div class="far-signatures">
+		<div class="far-sig-item">
+			<div class="far-sig-role">إعداد: مسؤول الأصول الثابتة</div>
+			<div class="far-sig-bottom">التوقيع / التاريخ</div>
+		</div>
+		<div class="far-sig-item">
+			<div class="far-sig-role">مراجعة: رئيس قسم المحاسبة</div>
+			<div class="far-sig-bottom">التوقيع / التاريخ</div>
+		</div>
+		<div class="far-sig-item">
+			<div class="far-sig-role">اعتماد: مدير إدارة الشؤون المالية</div>
+			<div class="far-sig-bottom">الختم والتوقيع</div>
+		</div>
+	</div>
+</div>

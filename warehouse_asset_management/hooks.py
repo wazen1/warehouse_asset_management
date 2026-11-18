@@ -290,4 +290,8 @@ before_job = ["warehouse_asset_management.overrides.depreciation.apply"]
 fixtures = [
 	{"dt": "Property Setter", "filters": [["doc_type", "=", "Asset"]]},
 	{"dt": "Custom Field", "filters": [["name", "=", "Accounts Settings-require_depreciation_entry_approval"]]},
+	{
+		"dt": "Custom Role",
+		"filters": [["report", "in", ["Asset Activity", "Asset Maintenance", "Fixed Asset Register"]]],
+	},
 ]
