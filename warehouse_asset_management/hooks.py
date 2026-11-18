@@ -134,6 +134,15 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+doctype_js = {"Asset": "public/js/asset.js"}
+
+jinja = {
+	"methods": [
+		"warehouse_asset_management.warehouse_asset_management.utils.asset_sticker.get_asset_sticker_qr_png_data_uri",
+		"warehouse_asset_management.warehouse_asset_management.utils.asset_sticker.get_asset_sticker_barcode_png_data_uri",
+	],
+}
+
 doc_events = {
 	"Purchase Receipt": {
 		"on_submit": "warehouse_asset_management.events.on_purchase_receipt_submit"
@@ -268,3 +277,7 @@ custom_fields = {
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+fixtures = [
+	{"dt": "Property Setter", "filters": [["doc_type", "=", "Asset"]]},
+]
