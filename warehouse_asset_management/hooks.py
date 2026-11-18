@@ -295,3 +295,5 @@ fixtures = [
 		"filters": [["report", "in", ["Asset Activity", "Asset Maintenance", "Fixed Asset Register"]]],
 	},
 ]
+
+after_migrate = ["warehouse_asset_management.setup.after_migrate"]
