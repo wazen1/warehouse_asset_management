@@ -1,0 +1,148 @@
+{
+ "category": "Modules",
+ "charts": [],
+ "creation": "2026-08-12 09:15:00.000000",
+ "custom_blocks": [],
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "asset",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Warehouse Asset Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "إدارة الأصول بالمخازن",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Header"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "سجلات أصول المخازن",
+   "link_count": 0,
+   "link_to": "Asset Inventory",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "سندات الاستلام",
+   "link_count": 0,
+   "link_to": "Purchase Receipt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "الأصول الثابتة ERPNext",
+   "link_count": 0,
+   "link_to": "Asset",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "تقارير أصول المخازن",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Header"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "رصيد الأصول حسب المخزن",
+   "link_count": 0,
+   "link_to": "Asset Balance by Warehouse",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "تفاصيل الأصول داخل المخازن",
+   "link_count": 0,
+   "link_to": "Asset Details in Warehouse",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "الأصول المسلمة للموظفين",
+   "link_count": 0,
+   "link_to": "Assets Delivered to Employees",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "حركة ونقل الأصول",
+   "link_count": 0,
+   "link_to": "Asset Movement and Transfer",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "الأصول بالمخازن بدون Fixed Asset",
+   "link_count": 0,
+   "link_to": "Unlinked Warehouse Assets",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-12 09:15:00.000000",
+ "modified_by": "Administrator",
+ "module": "Warehouse Asset Management",
+ "name": "Warehouse Asset Management",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "سجلات الأصول بالمخزن",
+   "link_to": "Asset Inventory",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "الأصول المسلمة للموظفين",
+   "link_to": "Assets Delivered to Employees",
+   "type": "Report"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "الأصول بالمخزن بدون أصل ثابت",
+   "link_to": "Unlinked Warehouse Assets",
+   "type": "Report"
+  }
+ ],
+ "title": "Warehouse Asset Management"
+}

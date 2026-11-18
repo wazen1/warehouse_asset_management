@@ -1,0 +1,207 @@
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap");
+
+* { box-sizing: border-box; }
+
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family: Cairo, "Noto Sans Arabic", "Segoe UI", sans-serif;
+	font-size: 13px;
+	line-height: 1.7;
+	color: #1f2937;
+	direction: rtl;
+	text-align: right;
+}
+
+.page { padding: 0; }
+
+/* ===== Header ===== */
+.report-header {
+	background: linear-gradient(135deg, #7a5230 0%, #c4922a 100%);
+	color: #ffffff;
+	padding: 22px 30px;
+	border-radius: 12px 12px 0 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.report-header .org-name {
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+}
+
+.report-header .report-title {
+	font-size: 18px;
+	font-weight: 700;
+	text-align: left;
+}
+
+/* ===== Meta row ===== */
+.report-meta {
+	background: #fbf7ee;
+	border-bottom: 2px solid #c4922a;
+	padding: 10px 30px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	color: #5b4632;
+	flex-wrap: wrap;
+	gap: 6px 24px;
+}
+
+.report-meta .meta-item strong {
+	color: #7a5230;
+	font-weight: 700;
+}
+
+/* ===== Table ===== */
+.report-table {
+	padding: 20px 16px 10px;
+	overflow: hidden;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+thead th {
+	background: #f7f0e3;
+	color: #000000;
+	font-weight: 700;
+	font-size: 13px;
+	padding: 9px 10px;
+	border: 1px solid #d8cfc0;
+	text-align: center;
+	white-space: nowrap;
+}
+
+tbody td {
+	padding: 7px 10px;
+	border: 1px solid #e5dfd3;
+	text-align: center;
+	vertical-align: middle;
+	word-wrap: break-word;
+}
+
+tbody tr:nth-child(even) td { background: #fdfaf4; }
+tbody tr:nth-child(odd) td { background: #ffffff; }
+
+tbody tr:hover td { background: #f5ead4; }
+
+td.num, th.num {
+	text-align: left;
+	direction: ltr;
+	font-variant-numeric: tabular-nums;
+}
+
+td.status {
+	font-weight: 700;
+	color: #7a5230;
+}
+
+/* ===== Footer ===== */
+.report-footer {
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 30px 24px;
+	font-size: 11px;
+	color: #8a7a66;
+	border-top: 1px dashed #d8cfc0;
+	margin: 10px 16px 0;
+}
+
+@media print {
+	@page {
+		size: A4 landscape;
+		margin: 8mm 6mm;
+	}
+	thead { display: table-header-group; }
+	tr { page-break-inside: avoid; }
+	body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+
+<div class="page" dir="rtl">
+
+	<!-- Header -->
+	<div class="report-header">
+		<div>
+			<div class="org-name">المصرف الاسلامي الليبي</div>
+		</div>
+		<div class="report-title">تقرير تفاصيل الأصول في المخزن</div>
+	</div>
+
+	<!-- Meta -->
+	<div class="report-meta">
+		<div class="meta-item">
+			<strong>تاريخ الطباعة:</strong>
+			{%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
+		</div>
+		{% if(filters && filters.warehouse) { %}
+			<div class="meta-item"><strong>المخزن:</strong> {%= filters.warehouse %}</div>
+		{% } %}
+		{% if(filters && filters.branch) { %}
+			<div class="meta-item"><strong>الفرع:</strong> {%= filters.branch %}</div>
+		{% } %}
+		{% if(filters && filters.item_code) { %}
+			<div class="meta-item"><strong>الصنف:</strong> {%= filters.item_code %}</div>
+		{% } %}
+		{% if(filters && filters.status) { %}
+			<div class="meta-item"><strong>الحالة:</strong> {%= filters.status %}</div>
+		{% } %}
+	</div>
+
+	<!-- Table -->
+	<div class="report-table">
+		<table>
+			<thead>
+				<tr>
+					<th>رمز السجل</th>
+					<th>كود الصنف</th>
+					<th>اسم الصنف</th>
+					<th>الرقم التسلسلي</th>
+					<th>المخزن</th>
+					<th>الفرع</th>
+					<th>تكلفة الشراء (د.أ)</th>
+					<th>سند الاستلام</th>
+					<th>المورد</th>
+					<th>الحالة</th>
+					<th>الأصل الثابت</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for(var i=0; i<data.length; i++) { %}
+					{% var row = data[i]; %}
+					<tr>
+						<td>{%= row.name %}</td>
+						<td>{%= row.item_code %}</td>
+						<td class="text-right" style="text-align:right;">{%= row.item_name %}</td>
+						<td>{%= row.serial_no %}</td>
+						<td>{%= row.warehouse %}</td>
+						<td>{%= row.branch %}</td>
+						<td class="num">{%= format_currency(row.purchase_cost, "JOD") %}</td>
+						<td>{%= row.purchase_receipt %}</td>
+						<td>{%= row.supplier %}</td>
+						<td class="status">{%= row.status %}</td>
+						<td>{%= row.fixed_asset %}</td>
+					</tr>
+				{% } %}
+				{% if(!data.length) { %}
+					<tr><td colspan="11" style="padding:20px;color:#8a7a66;">لا توجد بيانات</td></tr>
+				{% } %}
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Footer -->
+	<div class="report-footer">
+		<div>عدد السجلات: {%= data.length %}</div>
+		<div>تقرير نظام إدارة الأصول الثابتة — المصرف الاسلامي الليبي</div>
+	</div>
+
+</div>

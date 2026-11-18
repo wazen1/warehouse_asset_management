@@ -1,0 +1,270 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-08-12 09:15:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "item_code",
+  "item_name",
+  "is_fixed_asset_item",
+  "serial_no",
+  "company",
+  "column_break_1",
+  "purchase_receipt",
+  "supplier",
+  "purchase_cost",
+  "status",
+  "section_break_location",
+  "warehouse",
+  "branch",
+  "column_break_location_2",
+  "employee",
+  "department",
+  "location",
+  "delivery_date",
+  "section_break_fa",
+  "fixed_asset",
+  "column_break_fa_2",
+  "qr_code_html",
+  "section_break_movements",
+  "movement_logs",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "AST-INV-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "\u0627\u0644\u0633\u0644\u0633\u0644\u0629",
+   "options": "AST-INV-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0635\u0646\u0641",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0635\u0646\u0641",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fetch_from": "item_code.is_fixed_asset",
+   "fieldname": "is_fixed_asset_item",
+   "fieldtype": "Check",
+   "label": "\u0635\u0646\u0641 \u0623\u0635\u0644 \u062b\u0627\u0628\u062a",
+   "read_only": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u062a\u0633\u0644\u0633\u0644\u064a"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0634\u0631\u0643\u0629",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "\u0633\u0646\u062f \u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fetch_from": "purchase_receipt.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "\u0627\u0644\u0645\u0648\u0631\u062f",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "purchase_cost",
+   "fieldtype": "Currency",
+   "label": "\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0634\u0631\u0627\u0621"
+  },
+  {
+   "default": "\u0641\u064a \u0627\u0644\u0645\u062e\u0632\u0646",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u062d\u0627\u0644\u0629",
+   "options": "\u0641\u064a \u0627\u0644\u0645\u062e\u0632\u0646\n\u0645\u0633\u0644\u0645 \u0644\u0644\u0645\u0648\u0638\u0641\n\u0642\u064a\u062f \u0627\u0644\u0646\u0642\u0644\n\u062a\u0645 \u0625\u0646\u0634\u0627\u0621 \u0623\u0635\u0644 \u062b\u0627\u0628\u062a\n\u062a\u0627\u0644\u0641/\u0645\u0633\u062a\u0626\u062f",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_location",
+   "fieldtype": "Section Break",
+   "label": "\u0627\u0644\u0645\u0648\u0642\u0639 \u0648\u0627\u0644\u062a\u062e\u0632\u064a\u0646"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0645\u062e\u0632\u0646",
+   "options": "Warehouse",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0641\u0631\u0639",
+   "options": "Branch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_location_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0645\u0648\u0638\u0641 \u0627\u0644\u0645\u0633\u062a\u0644\u0645",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "\u0627\u0644\u0642\u0633\u0645",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0641\u0639\u0644\u064a",
+   "options": "Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u062a\u0633\u0644\u064a\u0645",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_fa",
+   "fieldtype": "Section Break",
+   "label": "\u0627\u0644\u0623\u0635\u0644 \u0627\u0644\u062b\u0627\u0628\u062a \u0648\u0627\u0644\u0640 QR Code"
+  },
+  {
+   "fieldname": "fixed_asset",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0627\u0644\u0623\u0635\u0644 \u0627\u0644\u062b\u0627\u0628\u062a (Fixed Asset)",
+   "options": "Asset",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fa_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qr_code_html",
+   "fieldtype": "HTML",
+   "label": "QR Code"
+  },
+  {
+   "fieldname": "section_break_movements",
+   "fieldtype": "Section Break",
+   "label": "\u0633\u062c\u0644 \u062d\u0631\u0643\u0627\u062a \u0627\u0644\u0623\u0635\u0644"
+  },
+  {
+   "fieldname": "movement_logs",
+   "fieldtype": "Table",
+   "label": "\u062d\u0631\u0643\u0627\u062a \u0627\u0644\u062a\u0646\u0642\u0644 \u0648\u0627\u0644\u062a\u0633\u0644\u064a\u0645",
+   "options": "Asset Inventory Movement"
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "\u0645\u0644\u0627\u062d\u0638\u0627\u062a"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "\u0645\u0644\u0627\u062d\u0638\u0627\u062a \u0625\u0636\u0627\u0641\u064a\u0629"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-12 09:15:00.000000",
+ "modified_by": "Administrator",
+ "module": "Warehouse Asset Management",
+ "name": "Asset Inventory",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Asset Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "item_code, item_name, serial_no, warehouse, employee, fixed_asset",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "item_name",
+ "track_changes": 1
+}
