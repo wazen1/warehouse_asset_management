@@ -134,6 +134,12 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+override_doctype_class = {"Asset": "warehouse_asset_management.overrides.asset.CustomAsset"}
+
+override_whitelisted_methods = {
+	"erpnext.assets.doctype.asset.asset.get_item_details": "warehouse_asset_management.overrides.asset.get_item_details",
+}
+
 doctype_js = {"Asset": "public/js/asset.js"}
 
 jinja = {
